@@ -1,0 +1,41 @@
+const gameboard = {
+    board: ["", "", "", "", "", "", "", "", ""]
+}
+
+const player1 = {
+    score: 0,
+    marker: "x"
+}
+
+const player2 = {
+    score: 0,
+    marker: "o"
+}
+
+const gameflow = {
+    winCombos: [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ],
+
+    check() {
+        for (let combo of this.winCombos){
+            if(gameboard.board[combo[0]] === ""){
+                continue;
+            }
+            else if(gameboard.board[combo[0]] === gameboard.board[combo[1]] &&
+                gameboard.board[combo[1]] === gameboard.board[combo[2]]
+            ) {
+                console.log("win");
+            }
+        }
+    }
+}
+
+console.log(gameflow.check());
