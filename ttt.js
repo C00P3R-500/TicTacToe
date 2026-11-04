@@ -1,15 +1,15 @@
+const squares = document.querySelectorAll(".square");
+
 const gameboard = {
     board: ["", "", "", "", "", "", "", "", ""]
 }
 
 const player1 = {
     score: 0,
-    marker: "x"
 }
 
 const player2 = {
     score: 0,
-    marker: "o"
 }
 
 const gameflow = {
@@ -30,6 +30,7 @@ const gameflow = {
     resetBoard() {
         for (let i = 0; i < 9; i ++) {
             gameboard.board[i] = "";
+            squares[i].textContent = "";
         }
     },
 
@@ -48,7 +49,7 @@ const gameflow = {
         }
     },
 
-    play() {
+    play(i) {
         let pick;
 
         console.log(gameboard.board.slice(0,3));
@@ -56,20 +57,25 @@ const gameflow = {
         console.log(gameboard.board.slice(6,9));
 
         if (this.turn === 1) {
-            pick = prompt("Player1 pick a square 0-8: ");
-            gameboard.board[pick] = "x";
+            gameboard.board[i] = "X";
             this.turn = 2;
             this.check();
-            this.play();
         }
         else {
-            pick = prompt("Player2 pick a square 0-8: ");
-            gameboard.board[pick] = "o";
+            gameboard.board[i] = "O";
             this.turn = 1;
             this.check();
-            this.play();
         }
     }
 }
 
-gameflow.play();
+
+for (let i = 0; i < 9; i++) {
+    squares[i].addEventListener("click", () => {
+        if(gameboard.board[i] === "") {
+            gameflow.play(i);
+            squares[i].textContent = gameboard.board[i];
+        }
+        
+    })
+};
