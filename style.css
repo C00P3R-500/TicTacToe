@@ -12,7 +12,13 @@ body {
     font-weight: bold;
     text-align: center;
     color: white;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+}
+
+.playLabel {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .square-container {
@@ -55,4 +61,22 @@ body {
     color: black;
     font-size: 75px;
     font-weight: bold;
+}
+
+.score-container {
+    display: flex;
+    margin-top: 50px;
+    gap: 100px;
+}
+
+.score-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.score {
+    display: flex; 
+    justify-content: center;
+    border: 3px solid black;
+    font-size: 30px;
 }
